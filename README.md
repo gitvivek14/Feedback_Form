@@ -6,7 +6,7 @@
     This project is a dynamic feedback form built using React JS and Material-UI. The form retrieves questions and choices from a backend API and allows users to submit feedback in a structured format.
     <br/>
     <br/>
-    <a href="https://github.com/gitvivek14/Feedback_Form">View Demo</a>
+    <a href="https://feedback-form-lake.vercel.app/">View Demo</a>
     .
   </p>
 </p>
