@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
+import Spinner from "./Spinner";
 
 
 
@@ -12,17 +13,20 @@ class Feedback_Form extends Component {
       Choices: [],
       imgurl: "",
       choices: Array(),
+      loading:false
     };
   }
   async componentDidMount() {
     let url =
       "https://brijfeedback.pythonanywhere.com/api/get-feedback-questions/?unitID=1";
+      this.setState({loading:true})
     const response = await fetch(url);
     const data = await response.json();
     this.setState({
       Questions: data.feedbackQuestions,
       Choices: data.choices,
       imgurl: data.companyLogo,
+      loading:false
     });
   }
   handleChange = (index, choice) => {
@@ -32,6 +36,9 @@ class Feedback_Form extends Component {
   };
   handleSubmit = (e)=>{
     const { choices,Questions } = this.state;
+    this.setState({
+        loading:true,
+    })
     const data = {
         feedback:{
             Questions,
@@ -39,12 +46,13 @@ class Feedback_Form extends Component {
         }
     }
     this.setState({
-        choices:Array()
+        choices:Array(),
+        loading:false
     });
     console.log(data);
   }
   render() {
-    const { choices } = this.state;
+    const { choices,loading } = this.state;
     return (
       <div className="w-11/12 flex flex-col items-center justify-center mt-6 max-w-full mx-auto">
         <div className="w-full flex flex-col  md:flex-row  items-center md:justify-between p-9 border-b-2  mx-auto">
@@ -69,6 +77,7 @@ class Feedback_Form extends Component {
             </p>
           </div>
           <div className="mt-4 w-full">
+          {loading && <Spinner/>}
             {this.state.Questions?.map((question, index) => (
               <div className={`flex md:flex-row flex-col items-center justify-between md:gap-x-28
               w-full border border-gray-100 bg-gray ${index%2==0 ? "bg-slate-100":"bg-white"}`} key={index} >
@@ -99,7 +108,9 @@ class Feedback_Form extends Component {
         <div className="mx-auto flex items-center w-full justify-center mt-8 mb-5">
           <div>
             <Button variant="contained" color="success" onClick={this.handleSubmit}>
-              Submit
+              {
+                loading ? "Submitting" : "Submit"
+              } 
             </Button>
           </div>
         </div>
