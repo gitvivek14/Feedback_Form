@@ -3,8 +3,6 @@ import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
 import Spinner from "./Spinner";
 
-
-
 class Feedback_Form extends Component {
   constructor(props) {
     super(props);
@@ -13,46 +11,58 @@ class Feedback_Form extends Component {
       Choices: [],
       imgurl: "",
       choices: Array(),
-      loading:false
+      loading: false,
     };
   }
   async componentDidMount() {
-    let url =
+    try {
+      let url =
       "https://brijfeedback.pythonanywhere.com/api/get-feedback-questions/?unitID=1";
-      this.setState({loading:true})
+    this.setState({ loading: true });
     const response = await fetch(url);
     const data = await response.json();
     this.setState({
       Questions: data.feedbackQuestions,
       Choices: data.choices,
       imgurl: data.companyLogo,
-      loading:false
-    });
+      loading: false,
+    }); 
+    } catch (error) {
+      console.log(error)
+      alert('Error in Fetching data')
+    }
+   
   }
   handleChange = (index, choice) => {
     const updatedChoices = [...this.state.choices];
     updatedChoices[index] = choice;
     this.setState({ choices: updatedChoices });
   };
-  handleSubmit = (e)=>{
-    const { choices,Questions } = this.state;
-    this.setState({
-        loading:true,
-    })
-    const data = {
-        feedback:{
-            Questions,
-            choices
-        }
+  handleSubmit = (e) => {
+    const { choices, Questions } = this.state;
+    if(choices.length == Questions.length){
+      this.setState({
+        loading: true,
+      });
+      const data = {
+        feedback: {
+          Questions,
+          choices,
+        },
+      };
+      this.setState({
+        choices: Array(),
+        loading: false,
+      });
+      alert("Submitted Succesfully , Check Console Window");
+      console.log(data);
+    }else{
+      alert('Please Mark all the Fields')
     }
-    this.setState({
-        choices:Array(),
-        loading:false
-    });
-    console.log(data);
-  }
+ 
+  };
   render() {
-    const { choices,loading } = this.state;
+    const { choices, loading } = this.state;
     return (
       <div className="w-11/12 flex flex-col items-center justify-center mt-6 max-w-full mx-auto">
         <div className="w-full flex flex-col  md:flex-row  items-center md:justify-between p-9 border-b-2  mx-auto">
@@ -66,7 +76,7 @@ class Feedback_Form extends Component {
           </div>
           <div className="border-b-4 border-red-600">
             <div>
-            <p className="text-4xl lg:text-6xl font-bold">Feedback Form</p>
+              <p className="text-4xl lg:text-6xl font-bold">Feedback Form</p>
             </div>
           </div>
         </div>
@@ -77,10 +87,15 @@ class Feedback_Form extends Component {
             </p>
           </div>
           <div className="mt-4 w-full">
-          {loading && <Spinner/>}
+            {loading && <Spinner />}
             {this.state.Questions?.map((question, index) => (
-              <div className={`flex md:flex-row flex-col items-center justify-between md:gap-x-28
-              w-full border border-gray-100 bg-gray ${index%2==0 ? "bg-slate-100":"bg-white"}`} key={index} >
+              <div
+                className={`flex md:flex-row flex-col items-center justify-between md:gap-x-28
+              w-full border border-gray-100 bg-gray ${
+                index % 2 == 0 ? "bg-slate-100" : "bg-white"
+              }`}
+                key={index}
+              >
                 <div className="flex items-center justify-start w-full p-5 max-w-[50%] font-semibold">
                   {`${index + 1}. ${question}`}
                 </div>
@@ -96,6 +111,7 @@ class Feedback_Form extends Component {
                         value={choice}
                         name={choices[index]}
                         checked={choices[index] == choice}
+                        required
                       />
                       <label htmlFor="choices">{choice}</label>
                     </div>
@@ -107,10 +123,12 @@ class Feedback_Form extends Component {
         </div>
         <div className="mx-auto flex items-center w-full justify-center mt-8 mb-5">
           <div>
-            <Button variant="contained" color="success" onClick={this.handleSubmit}>
-              {
-                loading ? "Submitting" : "Submit"
-              } 
+            <Button
+              variant="contained"
+              color="success"
+              onClick={this.handleSubmit}
+            >
+              Submit
             </Button>
           </div>
         </div>
