@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import { data } from "../example";
 import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
-import AlertTitle from '@mui/material/AlertTitle';
-import Alert from '@mui/material/Alert';
+
 
 
 class Feedback_Form extends Component {
@@ -17,7 +11,7 @@ class Feedback_Form extends Component {
       Questions: [],
       Choices: [],
       imgurl: "",
-      selected: Array(),
+      choices: Array(),
     };
   }
   async componentDidMount() {
@@ -30,28 +24,27 @@ class Feedback_Form extends Component {
       Choices: data.choices,
       imgurl: data.companyLogo,
     });
-    console.log(this.state.Questions);
   }
   handleChange = (index, choice) => {
-    const updatedChoices = [...this.state.selected];
+    const updatedChoices = [...this.state.choices];
     updatedChoices[index] = choice;
-    this.setState({ selected: updatedChoices });
+    this.setState({ choices: updatedChoices });
   };
   handleSubmit = (e)=>{
-    const { selected,Questions } = this.state;
+    const { choices,Questions } = this.state;
     const data = {
         feedback:{
             Questions,
-            selected
+            choices
         }
     }
     this.setState({
-        selected:Array()
+        choices:Array()
     });
     console.log(data);
   }
   render() {
-    const { selected } = this.state;
+    const { choices } = this.state;
     return (
       <div className="w-11/12 flex flex-col items-center justify-center mt-6 max-w-full mx-auto">
         <div className="w-full flex flex-col  md:flex-row  items-center md:justify-between p-9 border-b-2  mx-auto">
@@ -77,7 +70,7 @@ class Feedback_Form extends Component {
           </div>
           <div className="mt-4 w-full">
             {this.state.Questions?.map((question, index) => (
-              <div className={`flex  flex-row items-center justify-between md:gap-x-28
+              <div className={`flex md:flex-row flex-col items-center justify-between md:gap-x-28
               w-full border border-gray-100 bg-gray ${index%2==0 ? "bg-slate-100":"bg-white"}`} key={index} >
                 <div className="flex items-center justify-start w-full p-5 max-w-[50%] font-semibold">
                   {`${index + 1}. ${question}`}
@@ -92,10 +85,10 @@ class Feedback_Form extends Component {
                         id={choice}
                         onChange={() => this.handleChange(index, choice)}
                         value={choice}
-                        name={selected[index]}
-                        checked={selected[index] == choice}
+                        name={choices[index]}
+                        checked={choices[index] == choice}
                       />
-                      <label htmlFor="selected">{choice}</label>
+                      <label htmlFor="choices">{choice}</label>
                     </div>
                   ))}
                 </div>
