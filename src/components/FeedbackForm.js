@@ -3,14 +3,14 @@ import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
 import Spinner from "./Spinner";
 
-class Feedback_Form extends Component {
+class FeedbackForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Questions: [],
       Choices: [],
       imgurl: "",
-      choices: Array(),
+      choices: [],
       loading: false,
     };
   }
@@ -40,7 +40,7 @@ class Feedback_Form extends Component {
   };
   handleSubmit = (e) => {
     const { choices, Questions } = this.state;
-    if(choices.length == Questions.length){
+    if(choices.length === Questions.length){
       this.setState({
         loading: true,
       });
@@ -51,7 +51,7 @@ class Feedback_Form extends Component {
         },
       };
       this.setState({
-        choices: Array(),
+        choices: [],
         loading: false,
       });
       alert("Submitted Succesfully , Check Console Window");
@@ -92,7 +92,7 @@ class Feedback_Form extends Component {
               <div
                 className={`flex md:flex-row flex-col items-center justify-between md:gap-x-28
               w-full border border-gray-100 bg-gray ${
-                index % 2 == 0 ? "bg-slate-100" : "bg-white"
+                index % 2 === 0 ? "bg-slate-100" : "bg-white"
               }`}
                 key={index}
               >
@@ -110,7 +110,7 @@ class Feedback_Form extends Component {
                         onChange={() => this.handleChange(index, choice)}
                         value={choice}
                         name={choices[index]}
-                        checked={choices[index] == choice}
+                        checked={choices[index] === choice}
                         required
                       />
                       <label htmlFor="choices">{choice}</label>
@@ -136,4 +136,4 @@ class Feedback_Form extends Component {
     );
   }
 }
-export default Feedback_Form;
+export default FeedbackForm;
