@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+<br/>
+<p align="center">
+  <h3 align="center">Dynamic Feedback Form Project</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center">
+    This project is a dynamic feedback form built using React JS and Material-UI. The form retrieves questions and choices from a backend API and allows users to submit feedback in a structured format.
+    <br/>
+    <br/>
+    <a href="https://github.com/gitvivek14/Feedback_Form">View Demo</a>
+    .
+  </p>
+</p>
 
-## Available Scripts
+![Contributors](https://img.shields.io/github/contributors/gitvivek14/Feedback_Form?color=dark-green) ![Issues](https://img.shields.io/github/issues/gitvivek14/Feedback_Form) ![License](https://img.shields.io/github/license/gitvivek14/Feedback_Form) 
 
-In the project directory, you can run:
+## Table Of Contents
 
-### `npm start`
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Contributing](#contributing)
+* [Authors](#authors)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About The Project
 
-### `npm test`
+Dynamic Data: Questions and choices are fetched dynamically from a backend API.
+Radio Buttons: Choices for each question are presented as radio buttons, allowing users to select one option. Implemented using MaterialUI.
+Submit Feedback: Users can submit feedback, and the data is displayed in a structured format.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built With
 
-### `npm run build`
+Technologies Used
+React JS
+Material-UI
+Tailwind CSS (For Styling)
+Fetch (for API requests)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the project locally, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+This is an example of how to list things you need to use the software and how to install them.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repo
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+git clone https://github.com/your-username/your-feedback-form-project.git
+```
 
-## Learn More
+2. Install NPM packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+cd your-feedback-form-project
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Start the development server:
 
-### Code Splitting
+```JS
+npm start;
+The project will be accessible at http://localhost:3000 in your web browser.
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/gitvivek14/Feedback_Form/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
+* Please make sure you check your spelling and grammar.
+* Create individual PR for each suggestion.
+* Please also read through the [Code Of Conduct](https://github.com/gitvivek14/Feedback_Form/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Creating A Pull Request
 
-### Making a Progressive Web App
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Authors
 
-### Advanced Configuration
+* **Vivek Arora** - ** - [Vivek Arora](https://github.com/gitvivek14) - **
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
