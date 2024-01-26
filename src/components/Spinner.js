@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
-import {Circles} from "react-loader-spinner"
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import CircularProgress from '@mui/joy/CircularProgress';
 
 export default class Spinner
  extends Component {
   render() {
     return (
-      <div className='mx-auto my-auto w-full max-w-full flex items-center h-full justify-center'>
-        <div>
-        <Circles
-  height="80"
-  width="80"
-  color="#FF7F7F"
-  ariaLabel="circles-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-  />
-        </div>
- 
-      </div>
+      
+         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', flexWrap: 'wrap' , justifyItems:'center', mx:'1/2'          }}>
+      <Button startDecorator={<CircularProgress variant="solid" />}>Loading…</Button>
+      </Box>
+      
     )
   }
 }

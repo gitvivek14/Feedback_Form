@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import Radio from "@mui/material/Radio";
+// import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
 import Spinner from "./Spinner";
+import Radio from '@mui/joy/Radio';
+import Divider from '@mui/joy/Divider';
+import Table from '@mui/joy/Table';
+
 
 class FeedbackForm extends Component {
   constructor(props) {
@@ -65,7 +69,7 @@ class FeedbackForm extends Component {
     const { choices, loading } = this.state;
     return (
       <div className="w-11/12 flex flex-col items-center justify-center mt-6 max-w-full mx-auto">
-        <div className="w-full flex flex-col  md:flex-row  items-center md:justify-between p-9 border-b-2  mx-auto">
+        <div className="w-full flex flex-col  md:flex-row  items-center md:justify-between p-9  mx-auto">
           <div className="w-full md:max-w-[40%]">
             <img
               src={this.state.imgurl}
@@ -80,7 +84,8 @@ class FeedbackForm extends Component {
             </div>
           </div>
         </div>
-        <div className="w-full flex flex-col items-center md:p-9 p-2  border border-gray-500 mt-4 h-full  max-w-[100%]  mx-auto shadow-lg">
+        <Divider></Divider>
+        <div className="w-full flex flex-col items-center md:p-9 p-2   border-gray-500 mt-4 h-full  max-w-[100%]  mx-auto shadow-lg">
           <div className="w-full">
             <p className="font-bold text-1xl text-black">
               Please Provide your Feedback....
@@ -112,8 +117,12 @@ class FeedbackForm extends Component {
                         name={choices[index]}
                         checked={choices[index] === choice}
                         required
+                        label={choice}
+                        variant="soft"
+                        color="primary"
                       />
-                      <label htmlFor="choices">{choice}</label>
+                
+                     
                     </div>
                   ))}
                 </div>
